@@ -7,4 +7,4 @@ before_install:
 
 script:
   # `-e CI=true` argument will force Jest to run in CI-mode, and tests will only run once instead of launching the watcher.
-  - docker run -e CI=true zigavucko/docker-react yarn test
+  - docker run -e CI=true zigavucko/docker-react yarn test --coverage
