@@ -8,3 +8,19 @@ before_install:
 script:
   # `-e CI=true` argument will force Jest to run in CI-mode, and tests will only run once instead of launching the watcher.
   - docker run -e CI=true zigavucko/docker-react yarn test --coverage
+
+deploy:
+  # Automatic Travis CI preset.
+  provider: elasticbeanstalk
+  region: eu-west-2
+  app: docker-react
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-eu-west-2-286100118194"
+  # Same as app name.
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
